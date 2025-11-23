@@ -459,7 +459,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 100;
+    z-index: 1500; /* Increased to appear above mobile sidebar */
     animation: fadeIn 0.2s ease-out;
 }
 
@@ -1046,8 +1046,16 @@
         padding-left: 10px;
     }
 
-    .user-label {
-        display: none !important;
+    /* Modal positioning adjustments for mobile */
+    .modal-overlay {
+        padding: 1rem;
+    }
+    
+    .modal-content {
+        max-width: calc(100vw - 2rem);
+        margin: 0;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
     }
 
     /* Main Content on Mobile */
@@ -1096,20 +1104,40 @@
         justify-content: center;
         background: transparent;
         border: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+
+    .dash-search-bar.expanded {
+        width: 200px;
+        padding: 0 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(204, 255, 0, 0.2);
+        cursor: default;
     }
 
     .dash-search-input {
         display: none;
+        width: 0;
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dash-search-bar.expanded .dash-search-input {
+        display: block;
+        width: 100%;
+        opacity: 1;
     }
 
     .dash-search-bar:focus-within {
-        width: 40px;
-        background: transparent;
-        box-shadow: none;
-        border: none;
+        width: 200px;
+        padding: 0 12px;
+        background: rgba(204, 255, 0, 0.05);
+        box-shadow: 0 0 0 2px rgba(204, 255, 0, 0.1);
+        border: 1px solid rgba(204, 255, 0, 0.4);
     }
 
-    .dash-add-btn span {
+    .dash-search-icon-wrapper {\n        pointer-events: auto;\n        min-width: 24px;\n        flex-shrink: 0;\n    }\n\n    .dash-search-close {\n        background: transparent;\n        border: none;\n        color: #666;\n        cursor: pointer;\n        padding: 4px;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        transition: 0.2s;\n        flex-shrink: 0;\n    }\n\n    .dash-search-close:hover {\n        color: var(--accent, #ccff00);\n    }
         display: block;
         font-size: 1.5rem;
         line-height: 1;

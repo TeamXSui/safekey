@@ -711,25 +711,25 @@
     background: #ff5f56;
     border: none;
     border-radius: 8px;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
+    border-color: var(--accent, #ccff00);
+    background: rgba(204, 255, 0, 0.05);
+    outline: none;
 }
 
-.confirm-logout-btn:hover {
-    background: #ff443a;
-}
-
-/* Loading State */
-.loading-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+.submit-btn {
     width: 100%;
-    height: 100%;
-    background: rgba(10, 10, 10, 0.8);
-    display: flex;
+    padding: 1rem;
+    background: var(--accent, #ccff00);
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(204, 255, 0, 0.3);
 }
@@ -1110,14 +1110,19 @@
     }
 
     .dash-add-btn span {
-        display: none;
+        display: block;
+        font-size: 1.5rem;
+        line-height: 1;
     }
 
     .dash-add-btn {
         padding: 0;
-        width: 36px;
-        height: 36px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .dash-content {

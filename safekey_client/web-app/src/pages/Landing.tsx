@@ -292,7 +292,7 @@ export default function Landing() {
           </div>
 
           <div className="nav-right-actions">
-            <a href="httpsL//github.com/TeamXSui/safekey" target="_blank" rel="noreferrer" className="nav-link">GitHub</a>
+            <a href="https://github.com/TeamXSui/safekey" target="_blank" rel="noreferrer" className="nav-link">GitHub</a>
             <button onClick={() => navigate('/login')} className="btn-nav-cta">
               Launch App
             </button>

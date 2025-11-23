@@ -158,12 +158,39 @@ h3,
 }
 
 @media (max-width: 768px) {
+    .nav-wrapper {
+        top: 1rem;
+        padding: 0 0.5rem;
+    }
+
+    .nav-floating {
+        padding: 0.5rem 0.75rem;
+        border-radius: 20px;
+        max-width: 100%;
+    }
+
     .nav-center-links {
         display: none;
     }
 
-    .nav-floating {
-        padding: 0.75rem 1rem;
+    .logo-container {
+        gap: 0.5rem;
+    }
+
+    .logo-image {
+        height: 24px;
+    }
+
+    .logo-text {
+        font-size: 1rem;
+        margin-left: 5px;
+    }
+
+    .btn-nav-cta {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
+        border-radius: 50px;
     }
 }
 
@@ -1857,6 +1884,152 @@ footer {
 
     .nav-wrapper {
         padding: 0 1rem;
+    }
+
+    /* Mobile Font Size Optimizations */
+    .hero-title-large {
+        font-size: 2rem !important;
+        line-height: 1.1;
+    }
+
+    .hero-sub-text {
+        font-size: 0.9rem !important;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-badge-pill {
+        font-size: 0.7rem;
+        padding: 4px 12px;
+    }
+
+    .btn-primary-glow,
+    .btn-secondary-glass {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    .section-title,
+    .section-title-center {
+        font-size: 1.6rem !important;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+
+    .section-title-left {
+        font-size: 1.6rem !important;
+    }
+
+    .section-sub,
+    .section-sub-center,
+    .section-sub-left {
+        font-size: 0.9rem !important;
+        line-height: 1.4;
+        margin-bottom: 2rem;
+    }
+
+    .flow-number {
+        font-size: 1.5rem !important;
+    }
+
+    .flow-content h3 {
+        font-size: 1rem !important;
+    }
+
+    .flow-content p {
+        font-size: 0.8rem !important;
+    }
+
+    .panel-text h3 {
+        font-size: 1.5rem !important;
+    }
+
+    .panel-text p {
+        font-size: 0.9rem !important;
+    }
+
+    .panel-text .tag {
+        font-size: 0.8rem !important;
+    }
+
+    .bento-text h3 {
+        font-size: 0.95rem !important;
+    }
+
+    .bento-text p {
+        font-size: 0.8rem !important;
+    }
+
+    .grid-card h3 {
+        font-size: 1rem !important;
+    }
+
+    .grid-card p {
+        font-size: 0.8rem !important;
+    }
+
+    .benefit-item h3 {
+        font-size: 1.1rem !important;
+    }
+
+    .pricing-title {
+        font-size: 1.2rem !important;
+    }
+
+    .pricing-subtitle {
+        font-size: 0.8rem !important;
+    }
+
+    .pricing-badge {
+        font-size: 0.7rem !important;
+        padding: 4px 10px;
+    }
+
+    .pricing-amount {
+        font-size: 3rem !important;
+    }
+
+    .price-current .amount {
+        font-size: 3rem !important;
+    }
+
+    .price-meta .currency {
+        font-size: 1.2rem !important;
+    }
+
+    .price-meta .period {
+        font-size: 0.8rem !important;
+    }
+
+    .feature-item {
+        font-size: 0.8rem !important;
+    }
+
+    .feature-content h3 {
+        font-size: 1rem !important;
+    }
+
+    .feature-content p {
+        font-size: 0.8rem !important;
+    }
+
+    .btn-pricing-cta {
+        font-size: 0.8rem;
+        padding: 0.7rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .footer-left p,
+    .footer-right a {
+        font-size: 0.8rem;
+    }
+
+    .nav-link {
+        font-size: 0.8rem !important;
     }
 
     .pricing-amount {

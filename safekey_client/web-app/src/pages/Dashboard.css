@@ -1120,8 +1120,93 @@
     }
 
     .dash-title h2 {
-        font-size: 1.2rem;
+        font-size: 0.9rem !important;
         margin: 0;
+    }
+
+    .extension-status {
+        font-size: 0.65rem !important;
+    }
+
+    .dash-row {
+        padding: 0.8rem;
+        gap: 0.8rem;
+    }
+
+    .dash-row-title {
+        font-size: 0.85rem !important;
+    }
+
+    .dash-row-sub {
+        font-size: 0.7rem !important;
+    }
+
+    .modal-title {
+        font-size: 1.1rem !important;
+    }
+
+    .form-input {
+        font-size: 0.8rem !important;
+        padding: 0.7rem;
+    }
+
+    .submit-btn {
+        font-size: 0.8rem !important;
+        padding: 0.7rem;
+    }
+
+    .detail-group label {
+        font-size: 0.65rem !important;
+        margin-bottom: 0.4rem;
+    }
+
+    .detail-value-box {
+        font-size: 0.8rem !important;
+        padding: 0.7rem;
+    }
+
+    .delete-btn-large {
+        font-size: 0.8rem !important;
+        padding: 0.7rem;
+    }
+
+    .confirm-text {
+        font-size: 0.8rem !important;
+        margin-bottom: 1.5rem;
+    }
+
+    .cancel-btn,
+    .confirm-logout-btn {
+        font-size: 0.8rem !important;
+        padding: 0.6rem;
+    }
+
+    .user-menu-popup {
+        font-size: 0.75rem !important;
+    }
+
+    .user-menu-address {
+        font-size: 0.7rem !important;
+    }
+
+    .user-menu-label {
+        font-size: 0.7rem !important;
+    }
+
+    .user-menu-logout {
+        font-size: 0.75rem !important;
+    }
+
+    .empty-state h3 {
+        font-size: 1rem !important;
+    }
+
+    .empty-state p {
+        font-size: 0.8rem !important;
+    }
+
+    .dash-content {
+        padding: 0.8rem;
     }
 
     .extension-status {

@@ -730,6 +730,201 @@
     height: 100%;
     background: rgba(10, 10, 10, 0.8);
     display: flex;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(204, 255, 0, 0.3);
+}
+
+/* Detail Modal Styles */
+.detail-modal {
+    max-width: 450px;
+}
+
+.detail-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.detail-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #fff;
+}
+
+.detail-accounts-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.detail-accounts-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.detail-accounts-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.detail-account-item {
+    margin-bottom: 1rem;
+}
+
+.account-divider {
+    height: 1px;
+    background: rgba(204, 255, 0, 0.2);
+    margin: 1.5rem 0;
+}
+
+.detail-group {
+    margin-bottom: 1.5rem;
+}
+
+.detail-group label {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detail-value-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+}
+
+.masked {
+    letter-spacing: 3px;
+    color: #888;
+}
+
+.detail-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.toggle-btn,
+.copy-btn {
+    background: transparent;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-btn:hover,
+.copy-btn:hover {
+    color: var(--accent, #ccff00);
+    background: rgba(204, 255, 0, 0.1);
+}
+
+.detail-footer {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(204, 255, 0, 0.2);
+    padding-top: 1.5rem;
+}
+
+.delete-btn-large {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 50, 50, 0.1);
+    border: 1px solid rgba(255, 50, 50, 0.2);
+    border-radius: 10px;
+    color: #ff5f56;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.delete-btn-large:hover {
+    background: rgba(255, 50, 50, 0.2);
+    border-color: rgba(255, 50, 50, 0.4);
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+}
+
+/* Confirm Modal */
+.confirm-modal {
+    text-align: center;
+    max-width: 350px;
+}
+
+.confirm-text {
+    color: #888;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.confirm-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.cancel-btn {
+    flex: 1;
+    padding: 0.8rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.confirm-logout-btn {
+    flex: 1;
+    padding: 0.8rem;
+    background: #ff5f56;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.confirm-logout-btn:hover {
+    background: #ff443a;
+}
+
+/* Loading State */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.8);
+    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 50;
@@ -776,11 +971,11 @@
 @media (max-width: 768px) {
     .dashboard-container {
         flex-direction: row;
-        /* Keep row for sidebar */
     }
 
     .dash-sidebar {
-        width: 60px;
+        width: 80px;
+        /* Match desktop collapsed width */
         height: 100vh;
         position: fixed;
         top: 0;
@@ -789,28 +984,29 @@
         border-right: 1px solid rgba(255, 255, 255, 0.05);
         border-top: none;
         flex-direction: column;
-        justify-content: flex-start;
-        padding: 1rem 0;
+        justify-content: space-between;
+        /* Match desktop distribution */
+        padding: 1.5rem 0;
         background: rgba(5, 5, 5, 0.98);
         z-index: 1000;
     }
 
     .dash-sidebar.expanded {
-        width: 60px;
-        /* Keep collapsed on mobile */
-        align-items: center;
+        width: 80px;
+        /* Keep collapsed on mobile for now to save space */
     }
 
-    /* Hide logo in sidebar on mobile if we have it in top bar */
+    /* Show logo in sidebar on mobile */
     .dash-logo-container {
-        display: none;
+        display: flex;
+        margin-bottom: 0;
     }
 
     .dash-nav {
         flex-direction: column;
         width: 100%;
         gap: 1.5rem;
-        margin-top: 1rem;
+        margin-top: 0;
     }
 
     .dash-nav-item {
@@ -830,21 +1026,24 @@
     }
 
     .dash-user-container {
-        width: auto;
-        margin-top: 0;
+        width: 100%;
+        margin-top: auto;
+        display: flex;
+        justify-content: center;
     }
 
     .dash-sidebar.expanded .dash-user-container {
         padding-left: 0;
+        justify-content: center;
     }
 
     .dash-user-bottom {
-        padding: 5px;
+        padding: 10px;
     }
 
     .dash-sidebar.expanded .dash-user-bottom {
         width: auto;
-        padding-left: 5px;
+        padding-left: 10px;
     }
 
     .user-label {
@@ -853,64 +1052,46 @@
 
     /* Main Content on Mobile */
     .dash-main {
-        margin-left: 60px;
-        /* Space for sidebar */
-        margin-bottom: 0;
-        width: calc(100% - 60px);
+        margin-left: 80px;
+        /* Match sidebar width */
+        width: calc(100% - 80px);
     }
 
     .dash-header {
         padding: 0.8rem 1rem;
-        height: auto;
-        min-height: 70px;
-        display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-areas:
-            "logo actions"
-            "status actions";
-        gap: 4px;
-        align-items: center;
-    }
-
-    .mobile-logo {
+        height: 70px;
         display: flex;
+        /* Revert to flex */
+        justify-content: space-between;
         align-items: center;
-        gap: 8px;
-        grid-area: logo;
+        gap: 1rem;
     }
 
-    .mobile-logo-img {
-        height: 24px;
-        width: auto;
-    }
-
-    .mobile-logo-text {
-        font-size: 1.1rem;
-        font-weight: 700;
-    }
-
-    .dash-title {
-        grid-area: status;
-        margin: 0;
-    }
-
-    .dash-title h1 {
+    /* Hide mobile logo in header since it's in sidebar */
+    .mobile-logo {
         display: none;
     }
 
+    .dash-title {
+        margin: 0;
+    }
+
+    .dash-title h2 {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
     .extension-status {
-        margin-top: 0;
-        font-size: 0.75rem;
+        display: none;
+        /* Hide status on mobile to save space if needed, or keep small */
     }
 
     .dash-actions {
-        grid-area: actions;
         gap: 0.5rem;
     }
 
     .dash-search-bar {
         width: 40px;
-        /* Collapse search bar on mobile? Or just icon */
         padding: 0;
         justify-content: center;
         background: transparent;
@@ -919,19 +1100,14 @@
 
     .dash-search-input {
         display: none;
-        /* Hide input, show only icon */
     }
 
     .dash-search-bar:focus-within {
-        /* Expand on click if needed, but for now keep simple */
         width: 40px;
         background: transparent;
         box-shadow: none;
         border: none;
     }
-
-    /* If user wants full search, we might need a different approach. 
-       "things got jampacked" -> simplifying search helps. */
 
     .dash-add-btn span {
         display: none;
@@ -970,13 +1146,6 @@
     .user-menu-popup {
         bottom: 20px;
         left: 70px;
-        transform: none;
-        width: 240px;
-        max-width: none;
-    }
-
-    .dash-sidebar.expanded .user-menu-popup {
-        left: 70px;
-        bottom: 20px;
+        width: 200px;
     }
 }

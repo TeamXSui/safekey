@@ -1827,7 +1827,7 @@ footer {
         min-height: 500px;
     }
 
-    .dash-sidebar {
+    .landing-container .dash-sidebar {
         display: none !important;
     }
 
@@ -1876,7 +1876,7 @@ footer {
     }
 
     /* Ensure sidebar is hidden on mobile */
-    .dash-sidebar {
+    .landing-container .dash-sidebar {
         display: none !important;
     }
 

@@ -1812,35 +1812,35 @@ footer {
     }
 
     .vault-visual-right {
-        height: 400px;
+        height: auto;
+        overflow: visible;
+        justify-content: center;
+        padding-bottom: 2rem;
     }
 
     .dashboard-mockup {
         transform: none;
-        min-width: 600px;
-        /* Force width to show "half" */
-        margin-left: -100px;
-        /* Center the interesting part */
+        width: 100%;
+        min-width: 0;
+        margin-left: 0;
+        height: auto;
+        min-height: 500px;
+    }
+
+    .dash-sidebar {
+        display: none !important;
     }
 
     .dashboard-mockup:hover {
         transform: none;
     }
 
-    .vault-visual-right {
-        overflow: hidden;
-        justify-content: flex-start;
-        padding-bottom: 2rem;
-    }
-
     .hood-panel {
         width: 70vw;
-        /* Wider cards on mobile */
     }
 
     .panel-visual {
         height: 200px;
-        /* Reduced height */
     }
 
     .horizontal-track {
@@ -1851,11 +1851,11 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .hero {
+    .hero-new {
         padding-top: 6rem;
     }
 
-    .nav-content {
+    .nav-wrapper {
         padding: 0 1rem;
     }
 
@@ -1873,5 +1873,18 @@ footer {
 
     .horizontal-track {
         padding: 0 2rem;
+    }
+
+    /* Ensure sidebar is hidden on mobile */
+    .dash-sidebar {
+        display: none !important;
+    }
+
+    /* Ensure mockup fits mobile screen */
+    .dashboard-mockup {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin-left: 0 !important;
+        border-radius: 12px;
     }
 }

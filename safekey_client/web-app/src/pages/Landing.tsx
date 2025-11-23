@@ -292,7 +292,7 @@ export default function Landing() {
           </div>
 
           <div className="nav-right-actions">
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="nav-link">GitHub</a>
+            <a href="httpsL//github.com/TeamXSui/safekey" target="_blank" rel="noreferrer" className="nav-link">GitHub</a>
             <button onClick={() => navigate('/login')} className="btn-nav-cta">
               Launch App
             </button>
@@ -759,9 +759,9 @@ export default function Landing() {
             <p>© 2025 SafeKey</p>
           </div>
           <div className="footer-right">
-            <a href="#">Twitter</a>
-            <a href="#">Discord</a>
-            <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://x.com/safekeysui">X</a>
+            {/* <a href="#">Discord</a> */}
+            <a href="https://github.com/TeamXSui/safekey" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
       </footer>

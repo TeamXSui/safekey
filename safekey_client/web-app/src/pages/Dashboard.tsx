@@ -65,6 +65,12 @@ const Icons = {
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="9 18 15 12 9 6"></polyline>
     </svg>
+  ),
+  Close: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
   )
 }
 
@@ -135,6 +141,7 @@ export default function Dashboard() {
   // Track password visibility per account index in the modal
   const [visiblePasswords, setVisiblePasswords] = useState<Record<number, boolean>>({})
   const [sidebarExpanded, setSidebarExpanded] = useState(false)
+  const [searchExpanded, setSearchExpanded] = useState(false)
 
   // Add a flag to prevent multiple initializations
   const [isInitialized, setIsInitialized] = useState(false)
@@ -630,6 +637,38 @@ export default function Dashboard() {
     }))
   }
 
+  const isMobile = () => window.innerWidth <= 768
+
+  const handleSidebarToggle = () => {
+    if (!isMobile()) {
+      setSidebarExpanded(!sidebarExpanded)
+    }
+  }
+
+  const handleSearchClick = () => {
+    if (isMobile()) {
+      setSearchExpanded(!searchExpanded)
+      // Focus the input when expanding
+      if (!searchExpanded) {
+        setTimeout(() => {
+          const input = document.querySelector('.dash-search-input') as HTMLInputElement
+          if (input) input.focus()
+        }, 100)
+      }
+    }
+  }
+
+  const handleSearchBlur = () => {
+    if (isMobile() && searchQuery === '') {
+      setSearchExpanded(false)
+    }
+  }
+
+  const handleSearchClose = () => {
+    setSearchQuery('')
+    setSearchExpanded(false)
+  }
+
   if (!currentAccount) {
     return null
   }
@@ -638,13 +677,13 @@ export default function Dashboard() {
     <div className="dashboard-container">
       {/* Sidebar */}
       <div className={`dash-sidebar ${sidebarExpanded ? 'expanded' : ''}`}>
-        <div className="dash-logo-container" onClick={() => setSidebarExpanded(!sidebarExpanded)}>
+        <div className="dash-logo-container" onClick={handleSidebarToggle}>
           <img src={logoLight} alt="SafeKey" className="dash-logo-image" />
           <span className="dash-logo-text">SafeKey</span>
         </div>
 
         <div className="dash-nav">
-          <div className="dash-nav-item active" onClick={() => setSidebarExpanded(!sidebarExpanded)}>
+          <div className="dash-nav-item active" onClick={handleSidebarToggle}>
             <div className="nav-icon-wrapper">
               <Icons.Dashboard />
             </div>
@@ -695,7 +734,7 @@ export default function Dashboard() {
           </div>
 
           <div className="dash-actions">
-            <div className="dash-search-bar">
+            <div className={`dash-search-bar ${searchExpanded ? 'expanded' : ''}`} onClick={handleSearchClick}>
               <div className="dash-search-icon-wrapper">
                 <Icons.Search />
               </div>
@@ -705,7 +744,15 @@ export default function Dashboard() {
                 placeholder="Search vault..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                onBlur={handleSearchBlur}
+                onFocus={() => isMobile() && setSearchExpanded(true)}
+                onClick={(e) => e.stopPropagation()}
               />
+              {searchExpanded && isMobile() && (
+                <button className="dash-search-close" onClick={(e) => { e.stopPropagation(); handleSearchClose(); }}>
+                  <Icons.Close />
+                </button>
+              )}
             </div>
             <button className="dash-add-btn" onClick={() => setShowAddForm(true)}>
               <span>+</span>

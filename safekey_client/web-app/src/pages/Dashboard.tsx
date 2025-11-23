@@ -71,6 +71,13 @@ const Icons = {
       <line x1="18" y1="6" x2="6" y2="18"></line>
       <line x1="6" y1="6" x2="18" y2="18"></line>
     </svg>
+  ),
+  Refresh: () => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="23 4 23 10 17 10"></polyline>
+      <polyline points="1 20 1 14 7 14"></polyline>
+      <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+    </svg>
   )
 }
 
@@ -129,6 +136,7 @@ export default function Dashboard() {
   const [newCredential, setNewCredential] = useState({ domain: '', username: '', password: '' })
   const [loading, setLoading] = useState(false)
   const [loadingCredentials, setLoadingCredentials] = useState(true)
+  const [refreshing, setRefreshing] = useState(false)
   const [_extensionInstalled, setExtensionInstalled] = useState(false)
   const [extensionSynced, setExtensionSynced] = useState(false)
 
@@ -669,6 +677,18 @@ export default function Dashboard() {
     setSearchExpanded(false)
   }
 
+  const handleRefresh = async () => {
+    setRefreshing(true)
+    try {
+      await loadCredentials(true) // Force refresh without cache
+    } catch (error) {
+      console.error('[Dashboard] Error refreshing credentials:', error)
+    } finally {
+      setRefreshing(false)
+    }
+  }
+
+
   if (!currentAccount) {
     return null
   }
@@ -754,6 +774,14 @@ export default function Dashboard() {
                 </button>
               )}
             </div>
+            <button 
+              className={`dash-refresh-btn ${refreshing ? 'refreshing' : ''}`} 
+              onClick={handleRefresh}
+              disabled={refreshing}
+              title="Refresh credentials"
+            >
+              <Icons.Refresh />
+            </button>
             <button className="dash-add-btn" onClick={() => setShowAddForm(true)}>
               <span>+</span>
               {/* Add New */}

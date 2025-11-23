@@ -349,6 +349,41 @@
     box-shadow: 0 4px 12px rgba(204, 255, 0, 0.3);
 }
 
+/* Refresh Button */
+.dash-refresh-btn {
+    height: 40px;
+    width: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 8px;
+    color: var(--accent, #ccff00);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dash-refresh-btn:hover {
+    background: rgba(204, 255, 0, 0.1);
+    border-color: var(--accent, #ccff00);
+    color: var(--accent, #ccff00);
+    transform: translateY(-1px);
+}
+
+.dash-refresh-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.dash-refresh-btn.refreshing {
+    animation: spin 1s linear infinite;
+}
+
+.dash-refresh-btn.refreshing:hover {
+    transform: none;
+}
+
 /* Content Area */
 .dash-content {
     flex: 1;
@@ -1151,6 +1186,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .dash-refresh-btn {
+        width: 40px;
+        height: 40px;
     }
 
     .dash-content {
